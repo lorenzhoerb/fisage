@@ -49,3 +49,23 @@ def normalize_company_name(name: str) -> str:
     name = re.sub(r"\s+", " ", name)
 
     return name
+
+
+def normalize_text_field(value: str) -> str:
+    """
+    Normalize a text field like sector or industry: lowercase, remove punctuation,
+    and collapse multiple spaces.
+
+    Args:
+        value (str): Input string, can be None or NaN.
+
+    Returns:
+        str: Cleaned string, empty if input is None/NaN.
+    """
+    if pd.isna(value):
+        return ""
+
+    value = value.lower()
+    value = re.sub(r"[^\w\s]", " ", value)  # remove punctuation
+    value = re.sub(r"\s+", " ", value)  # collapse multiple spaces
+    return value.strip()

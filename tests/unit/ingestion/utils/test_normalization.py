@@ -1,5 +1,5 @@
 import pytest
-from ingestion.utils.normalization import normalize_company_name
+from ingestion.utils.normalization import normalize_company_name, normalize_text_field
 
 
 @pytest.mark.unit
@@ -33,3 +33,22 @@ from ingestion.utils.normalization import normalize_company_name
 )
 def test_normalize_company(input_name, expected):
     assert normalize_company_name(input_name) == expected
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize(
+    "input_value, expected",
+    [
+        ("Information Technology ", "information technology"),
+        ("Software—Application", "software application"),
+        ("Health Care", "health care"),
+        ("  Consumer  Discretionary  ", "consumer discretionary"),
+        (None, ""),
+        ("", ""),
+    ],
+)
+def test_normalize_text_field(input_value, expected):
+    """
+    Test normalization of sector/industry text fields.
+    """
+    assert normalize_text_field(input_value) == expected
