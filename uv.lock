@@ -262,6 +262,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "neo4j" },
+    { name = "pandas" },
     { name = "python-dotenv" },
     { name = "yfinance" },
 ]
@@ -277,6 +278,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "neo4j", specifier = ">=6.1.0" },
+    { name = "pandas", specifier = ">=3.0.1" },
     { name = "python-dotenv", specifier = ">=1.2.2" },
     { name = "yfinance", specifier = ">=1.2.0" },
 ]
