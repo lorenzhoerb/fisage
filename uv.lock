@@ -149,9 +149,9 @@ wheels = [
 ]
 
 [[package]]
-name = "finsage"
+name = "fisage"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "neo4j" },
     { name = "python-dotenv" },

@@ -1,6 +1,5 @@
-from neo4j import GraphDatabase
-
 from config.settings import settings
+from neo4j import GraphDatabase
 
 
 class Neo4jConnection:
