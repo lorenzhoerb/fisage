@@ -1,0 +1,15 @@
+services:
+  neo4j:
+    image: neo4j:5.22.0
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - ./data/neo4j/data:/data
+      - ./data/neo4j/import:/import
+      - ./data/neo4j/logs:/logs
+    environment:
+      - NEO4J_AUTH=neo4j/neo4j_password
+      - NEO4JLABS_PLUGINS=["apoc"]
+      - NEO4J_server_memory_heap_max__size=1G
+    restart: unless-stopped
